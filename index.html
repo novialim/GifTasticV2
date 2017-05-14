@@ -91,7 +91,7 @@
         console.log("You are in getGiphyTrends");
 
         var topGiphys = [];
-        var queryURL = "http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+        var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
 
         $.ajax({
           url: queryURL,
@@ -207,7 +207,7 @@
 
 
 
-          var queryURL = "http://api.giphy.com/v1/gifs/search?q="+encodeURIComponent(localGiphys[i])+"&api_key=dc6zaTOxFJmzC";
+          var queryURL = "https://api.giphy.com/v1/gifs/search?q="+encodeURIComponent(localGiphys[i])+"&api_key=dc6zaTOxFJmzC";
 
           $.ajax({
             url: queryURL,
