@@ -1,0 +1,458 @@
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+
+@media (min-width: 768px) {
+.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+.caption {
+	position: absolute;
+	background-color: grey;
+	top: 80%;
+	left: 15%;
+	color: black;
+}
+
+#remote-img {
+	height: 500px;
+	width: 499px;
+	position: fixed;
+	right: 100px;
+	top: 130px;
+
+}
+
+#giphybtns {
+	width:470px;
+	position: fixed;
+	float: right;
+	right: 110px;
+	top:300px;
+	margin:5px;
+}
+
+#giphy-add {
+	width:500px;
+	position: fixed;
+	float: right;
+	right: 75px;
+	top:570px;
+}
+
+.giphybtn {
+	margin:5px;
+}
+
+#giphy-favorites {
+	display: block;
+	position: relative;
+	float: left;
+}
+
+
+
+/*TV Shape Styling - Need to dry this portion up*/
+
+#giphyDiv-0 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-0:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-0 {
+    background-position: center center;
+}
+
+#giphyDiv-0 img {
+    display: none;
+}
+
+
+#giphyDiv-1 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-1:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-1 {
+    background-position: center center;
+}
+
+#giphyDiv-1 img {
+    display: none;
+}
+
+#giphyDiv-2 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-2:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-2 {
+    background-position: center center;
+}
+
+#giphyDiv-2 img {
+    display: none;
+}
+
+#giphyDiv-3 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-3:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-3 {
+    background-position: center center;
+}
+
+#giphyDiv-3 img {
+    display: none;
+}
+
+#giphyDiv-4 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-4:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-4 {
+    background-position: center center;
+}
+
+#giphyDiv-4 img {
+    display: none;
+}
+
+#giphyDiv-5 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-5:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-5 {
+    background-position: center center;
+}
+
+#giphyDiv-5 img {
+    display: none;
+}
+
+#giphyDiv-6 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-6:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-6 {
+    background-position: center center;
+}
+
+#giphyDiv-6 img {
+    display: none;
+}
+
+#giphyDiv-7 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-7:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-7 {
+    background-position: center center;
+}
+
+#giphyDiv-7 img {
+    display: none;
+}
+
+#giphyDiv-8 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-8:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-8 {
+    background-position: center center;
+}
+
+#giphyDiv-8 img {
+    display: none;
+}
+
+#giphyDiv-9 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-9:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-9 {
+    background-position: center center;
+}
+
+#giphyDiv-9 img {
+    display: none;
+}
+
+#giphyDiv-10 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-10:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-10 {
+    background-position: center center;
+}
+
+#giphyDiv-10 img {
+    display: none;
+}
+
+#giphyDiv-11 {
+    position: relative;
+    width: 180px;
+    height: 130px;
+    margin: 20px 10px;
+    background: #0809fe;
+    border-radius: 50% / 10%;
+    color: white;
+    text-align: center;
+    text-indent: .1em;
+}
+
+#giphyDiv-11:before {
+    content: "";
+    position: absolute;
+    top: 10%;
+    bottom: 10%;
+    right: -5%;
+    left: -5%;
+    background: inherit;
+    border-radius: 5% / 50%;
+}
+
+#giphyDiv-11 {
+    background-position: center center;
+}
+
+#giphyDiv-11 img {
+    display: none;
+}
+
+/*End of TV Shape Styling - Need to dry this portion up*/

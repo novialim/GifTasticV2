@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>America's Next Top Giphys</title>
+
+    <!-- Stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://bootswatch.com/cyborg/bootstrap.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>America's Next Top Giphys</h1>
+    <hr/>
+  </div>
+
+  <div class="container">
+    <div id="giphy-favorites" class="row col-xs-8 col-s-8 col-md-8 "></div>
+  </div>
+
+  <div class="container">
+    <div class="row col-xs-8 col-s-8 col-md-8 col-xs-offset-4 col-s-offset-4 col-md-offset-4">
+        <img id="remote-img" class='img-responsive' src="assets/img/touchscreenremote.png"/>
+    </div>
+    <div id="giphybtns" class="row col-xs-8 col-s-8 col-md-8 col-xs-offset-4 col-s-offset-4 col-md-offset-4">
+    </div>
+  </div>
+
+    <form class="form-inline">
+      <div id="giphy-add">
+        <div class="form-group">
+          <label for="giphy-input">What is your favorite giphy?</label>
+          <input type="text" id="giphy-favorite" class="form-control">
+        </div>
+        <div class="form-group">
+          <input id="add-favorite" type="submit" class="btn btn-md btn-default" value="Submit">
+        </div>
+      </div>  
+    </form>
+    
+    
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript">
+
+    var localGiphys = [];
+
+      $("#giphybtns").on("click",".giphybtn", giphyClick);
+
+      $("#add-favorite").on("click",function(event){
+        event.preventDefault();
+        var giphyadd = $("#giphy-favorite").val();
+        localGiphys.push(giphyadd);
+        console.log("TheLocalArray is now: " +localGiphys.length);
+        renderLocal(localGiphys);
+      })
+
+      function giphyClick(event) {
+        var giphys = $(this).attr("data-giphy");
+        getGiphy(giphys);
+        console.log("You are in giphyClick");
+      }
+      
+      function getGiphy(giphys){
+        console.log("You are in getGiphy");
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q="+encodeURIComponent(giphys)+"&api_key=dc6zaTOxFJmzC";
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+          // Success
+          var selectedGiphy = [];
+
+          for(var i=0; i<response.data.length;i++){          
+            selectedGiphy.push(response.data[i]);                         
+          }    
+
+          renderTrends(selectedGiphy,giphys);
+          
+        });
+      }
+      
+      function getGiphyTrends(){
+        console.log("You are in getGiphyTrends");
+
+        var topGiphys = [];
+        var queryURL = "http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC";
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+          // console.log(response);
+
+          for(var i=0; i<response.data.length;i++){          
+            if(response.data[i].username!=="" && response.pagination.count!==0){  
+              topGiphys.push(response.data[i]);
+              localGiphys.push(response.data[i].user.username);
+                
+            }            
+          }       
+
+          renderTrends(topGiphys);
+          renderLocal(localGiphys);
+        });
+      }
+
+      function renderTrends(topGiphys,giphys){
+        console.log("You are in renderTrends");
+        var trends = $("#giphy-favorites");
+        var numofGiphys = 12;
+
+        trends.empty();
+
+        if (topGiphys.length>=12){
+          for(var h=0; h<numofGiphys; h++){
+              
+            if(topGiphys[h].username!=""){
+              trends.append(
+                $('<div/>')
+                .attr("id", "giphyDiv-"+[h])
+                .addClass("col-xs-15 col-s-15 col-md-15")
+                .append("<img id='theImg-"+[h]+"' class='img-responsive center-block' src='"+topGiphys[h].images.downsized.url+"' style='height: 150px;'/>")
+                .append("<span class='caption'>"+topGiphys[h].user.username+"</span>")
+              );
+            }
+            else{
+                trends.append(
+                $('<div/>')
+                .attr("id", "giphyDiv-"+[h])
+                .addClass("col-xs-15 col-s-15 col-md-15")
+                .append("<img id='theImg-"+[h]+"' class='img-responsive center-block' src='"+topGiphys[h].images.downsized.url+"' style='height: 150px;'/>")
+                .append("<span class='caption'>"+giphys+"</span>")
+              );
+            }  
+
+
+          }
+            
+        }
+        else if (topGiphys.length<12 && topGiphys.length!==0){
+          for(var h=0; h<topGiphys.length; h++){
+            
+
+            if(topGiphys[h].username!=""){  
+              trends.append(
+                $('<div/>')
+                .attr("id", "giphyDiv-"+[h])
+                .addClass("col-xs-15 col-s-15 col-md-15")
+                .append("<img id='theImg-"+[h]+"' class='img-responsive center-block' src='"+topGiphys[h].images.downsized.url+"' style='height: 150px;'/>")
+                .append("<span class='caption'>"+topGiphys[h].user.username+"</span>")
+              );
+            }
+            else{
+                trends.append(
+                $('<div/>')
+                .attr("id", "giphyDiv-"+[h])
+                .addClass("col-xs-15 col-s-15 col-md-15")
+                .append("<img id='theImg-"+[h]+"' class='img-responsive center-block' src='"+topGiphys[h].images.downsized.url+"' style='height: 150px;'/>")
+                .append("<span class='caption'>"+giphys+"</span>")
+              );
+            }  
+
+
+          } // End of for loop
+         
+
+        }
+
+        for(var j=0; j<numofGiphys; j++){
+          tvbackground = $('#theImg-'+[j]).attr('src');
+          $('#giphyDiv-'+[j]).css('background-image', 'url(' + tvbackground + ')');
+          $('#giphyDiv-'+[j]).css('margin', '12px');
+        }
+
+      } // End of renderTrends
+
+      function renderLocal(localGiphys){
+        console.log("You are in renderLocal");
+
+        console.log("The lenght of passed in array is: "+localGiphys.length);
+        console.log(localGiphys);
+
+        var fav = $("#giphybtns");
+
+        fav.empty();
+
+        if(localGiphys.length>=25){
+          localGiphys.shift();
+
+        }
+
+        for(var i = 0; i < localGiphys.length; i++){
+
+            // var button = $("<button/>");
+            // button.text(localGiphys[i]);
+            // button.addClass("btn btn-sm giphybtn");
+            // button.attr("data-giphy",localGiphys[i]);
+            // fav.append(button);
+
+
+
+          var queryURL = "http://api.giphy.com/v1/gifs/search?q="+encodeURIComponent(localGiphys[i])+"&api_key=dc6zaTOxFJmzC";
+
+          $.ajax({
+            url: queryURL,
+            method: "GET"
+          }).done(function(response) {
+            // Success
+      
+              // If there are search results, not studio original gifs and username is not blank
+              if(response.pagination.count!==0 && response.data[0].username!=="studiosoriginals" && response.data[0].username!==""){ 
+
+                // console.log(response.data[i].user.username);  
+
+                  var button = $("<button/>");
+                  button.text(response.data[0].user.username);
+                  button.addClass("btn btn-sm giphybtn");
+                  button.attr("data-giphy",response.data[0].user.username);
+                  fav.append(button);
+              }       
+
+            
+          });
+
+        }
+
+                  var button = $("<button/>");
+                  button.text(localGiphys[localGiphys.length-1]);
+                  button.addClass("btn btn-sm giphybtn");
+                  button.attr("data-giphy",localGiphys[localGiphys.length-1]);
+                  fav.append(button);
+
+        
+
+      } // End of renderLocal
+
+       function renderAdd(){
+
+        var selectedGiphy = [];
+        var fav = $("#giphybtns");
+
+        fav.empty();
+
+        if(localGiphys.length>=25){
+          localGiphys.shift();
+
+        }
+
+        for(var i = 0; i < localGiphys.length; i++){
+          var button = $("<button/>");
+          button.text(localGiphys[i]);
+          button.addClass("btn btn-sm giphybtn");
+          button.attr("data-giphy",localGiphys[i]);
+          fav.append(button);
+        }       
+  
+      } // End of renderAdd
+
+
+
+
+      getGiphyTrends();
+
+      var tvbackground1 = $('#tvshape img').attr('src');
+      $('#tvshape').css('background-image', 'url(' + tvbackground1 + ')');
+      
+
+    </script>
+  </div>
+</body>
+
+</html>
